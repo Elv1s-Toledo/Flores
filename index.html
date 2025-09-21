@@ -47,7 +47,7 @@
     <div class="caption">
       <h1>Ivana eres mi flor amarilla en este universo infinito</h1>
       <p> Te regalo estás Flores amarillas virtuales solo para ti, no es mucho pero espero guste Uwu</p> <br> <br>
-        <h1> 🌼 Feiz 21 de Septiembre 🌼 </h1>
+        <h1>🌼 Feiz 21 de Septiembre 🌼</h1>
     </div>
 
     <div class="controls">
@@ -245,5 +245,13 @@
     // accessibility: pause when page not visible
     document.addEventListener('visibilitychange', ()=>{ running = !document.hidden; document.getElementById('toggle').textContent = running ? 'Pausar' : 'Reanudar'; if(running) last = performance.now(); });
   </script>
+  <audio id="bg-music" src="" autoplay loop></audio>
+<script>
+  const music = document.getElementById('bg-music');
+  document.body.addEventListener('click', () => {
+    music.play();
+  }, { once: true });
+</script>
+  
 </body>
 </html>
