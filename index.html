@@ -245,13 +245,32 @@
     // accessibility: pause when page not visible
     document.addEventListener('visibilitychange', ()=>{ running = !document.hidden; document.getElementById('toggle').textContent = running ? 'Pausar' : 'Reanudar'; if(running) last = performance.now(); });
   </script>
-  <audio id="bg-music" src="wwd.mp3juice.blog - Bad Bunny - Moscow Mule (Video Oficial) Un Verano Sin Ti (320 KBps).mp3" autoplay loop></audio>
+  <audio id="player" autoplay></audio>
+
 <script>
-  const music = document.getElementById('bg-music');
-  document.body.addEventListener('click', () => {
-    music.play();
-  }, { once: true });
+  const tracks = ["Flores.mp3", "wwd.mp3juice.blog - Bad Bunny - Moscow Mule (Video Oficial) Un Verano Sin Ti (320 KBps).mp3"]; // lista de canciones
+  let current = 0;
+  const player = document.getElementById("player");
+
+  // arrancar primera
+  player.src = tracks[current];
+  player.play();
+
+  // cuando termina una, pasa a la siguiente
+  player.addEventListener("ended", () => {
+    current++;
+    if (current < tracks.length) {
+      player.src = tracks[current];
+      player.play();
+    } else {
+      // vuelve a empezar desde la primera (loop infinito)
+      current = 0;
+      player.src = tracks[current];
+      player.play();
+    }
+  });
 </script>
+  
   
 </body>
 </html>
